@@ -25,6 +25,9 @@ if (function_exists('patchwork_require')) return;
 
 isset($_SERVER['REQUEST_TIME_FLOAT']) or $_SERVER['REQUEST_TIME_FLOAT'] = microtime(true);
 
+// These braces are to get function_exists() call above to return false.
+{
+
 /**
  * This function encapsulates a require in its own isolated scope and forces
  * the error reporting level to be always enabled for uncatchable fatal errors.
@@ -95,4 +98,6 @@ function patchwork_shutdown_call($c)
         }
         exit(255);
     }
+}
+
 }
